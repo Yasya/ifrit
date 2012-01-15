@@ -14,7 +14,7 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
-    @node = Node.find(params[:id])
+    @node = Node.find_by_number(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class NodesController < ApplicationController
 
   # GET /nodes/1/edit
   def edit
-    @node = Node.find(params[:id])
+    @node = Node.find_by_number(params[:id])
   end
 
   # POST /nodes
@@ -42,13 +42,13 @@ class NodesController < ApplicationController
   def create
     @board = Board.find_by_code(params[:board_id])
     @node = @board.nodes.create(params[:node])
-    respond_to do |format|
     @node.last_comment = @node.created_at
     @node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
     @node.number = @board.post_counter.to_int + 1
     @node.save
     @board.post_counter = @node.number
     @board.save
+    respond_to do |format|
       if @node.save
         format.html { redirect_to @node, :notice => 'Node was successfully created.' }
         format.json { render :json => @node, :status => :created, :location => @node }
@@ -57,18 +57,12 @@ class NodesController < ApplicationController
         format.json { render :json => @node.errors, :status => :unprocessable_entity }
       end
     end
-    #@node.last_comment = @node.created_at
-    #@node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
-    #@node.number = @board.post_counter.to_int + 1 
-    #@node.save
-    #@board.post_counter = @node.number
-    #@board.save
   end
 
   # PUT /nodes/1
   # PUT /nodes/1.json
   def update
-    @node = Node.find(params[:id])
+    @node = Node.find_by_number(params[:id])
 
     respond_to do |format|
       if @node.update_attributes(params[:node])
@@ -84,7 +78,7 @@ class NodesController < ApplicationController
   # DELETE /nodes/1
   # DELETE /nodes/1.json
   def destroy
-    @node = Node.find(params[:id])
+    @node = Node.find_by_number(params[:id])
     @node.destroy
 
     respond_to do |format|

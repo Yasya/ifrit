@@ -4,7 +4,7 @@ class Node < ActiveRecord::Base
   belongs_to :board
   mount_uploader :picture, PictureUploader
   
-  #def to_param
-  #  "#{id}.html"
-  #end
+  def to_param
+    "#{number}"
+  end
 end

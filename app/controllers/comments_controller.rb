@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-   @node = Node.find(params[:node_id])
+   @node = Node.find_by_number(params[:node_id])
    @board = @node.board
    @comment = @node.comments.create(params[:comment])
    @comment.formated_date = @comment.created_at.strftime("%d %b %Y, %H:%M")
@@ -73,7 +73,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @node = Node.find(params[:node_id])
+    @node = Node.find_by_number(params[:node_id])
     @comment = @node.comments.find(params[:id])
     @comment.destroy
     redirect_to node_path(@node)
