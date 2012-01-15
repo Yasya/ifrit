@@ -3,4 +3,8 @@ class Node < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   belongs_to :board
   mount_uploader :picture, PictureUploader
+  
+  #def to_param
+  #  "#{number}.html"
+  #end
 end

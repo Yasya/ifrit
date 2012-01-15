@@ -40,7 +40,7 @@ class NodesController < ApplicationController
   # POST /nodes
   # POST /nodes.json
   def create
-    @board = Board.find(params[:board_id])
+    @board = Board.find_by_code(params[:board_id])
     @node = @board.nodes.create(params[:node])
     respond_to do |format|
       if @node.save

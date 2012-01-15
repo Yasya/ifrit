@@ -10,6 +10,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120103094950) do
+
+  create_table "boards", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "post_counter"
+    t.integer  "node_id"
+    t.integer  "comment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "head"
+    t.text     "body"
+    t.string   "picture"
+    t.integer  "number"
+    t.string   "formated_date"
+    t.integer  "node_id"
+    t.integer  "board_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nodes", :force => true do |t|
+    t.string   "head"
+    t.text     "body"
+    t.string   "picture"
+    t.integer  "number"
+    t.integer  "parent"
+    t.string   "formated_date"
+    t.integer  "comment_id"
+    t.integer  "board_id"
+    t.datetime "last_comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     # Пробуем извлекать борду по code
-    @board = Board.find(params[:id])
+    @board = Board.find_by_code(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1/edit
   def edit
-    @board = Board.find(params[:id])
+    @board = Board.find_by_code(params[:id])
   end
 
   # POST /boards
@@ -57,7 +57,7 @@ class BoardsController < ApplicationController
   # PUT /boards/1
   # PUT /boards/1.json
   def update
-    @board = Board.find(params[:id])
+    @board = Board.find_by_code(params[:id])
 
     respond_to do |format|
       if @board.update_attributes(params[:board])
@@ -73,7 +73,7 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
-    @board = Board.find(params[:id])
+    @board = Board.find_by_code(params[:id])
     @board.destroy
 
     respond_to do |format|
