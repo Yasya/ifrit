@@ -3,4 +3,8 @@ class Comment < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   belongs_to :node
   belongs_to :board
+
+  #def to_param
+  #  "#{number}"
+  #end
 end
