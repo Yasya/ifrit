@@ -5,7 +5,6 @@ class CreateNodes < ActiveRecord::Migration
       t.text :body
       t.string :picture
       t.integer :number
-      t.integer :parent
       t.string :formated_date
       t.references :comment
       t.references :board

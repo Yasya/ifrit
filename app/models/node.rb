@@ -5,6 +5,6 @@ class Node < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   
   #def to_param
-  #  "#{number}.html"
+  #  "#{id}.html"
   #end
 end

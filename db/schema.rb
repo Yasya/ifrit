@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20120103094950) do
     t.text     "body"
     t.string   "picture"
     t.integer  "number"
-    t.integer  "parent"
     t.string   "formated_date"
     t.integer  "comment_id"
     t.integer  "board_id"
