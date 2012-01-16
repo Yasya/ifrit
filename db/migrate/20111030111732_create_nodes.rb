@@ -11,5 +11,6 @@ class CreateNodes < ActiveRecord::Migration
       t.datetime :last_comment
       t.timestamps
     end
+    #add_index :node, :number, :unique => true
   end
 end

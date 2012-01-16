@@ -10,5 +10,6 @@ class CreateComments < ActiveRecord::Migration
       t.references :board
       t.timestamps
     end
+    #add_index :comments, :number, :unique => true
   end
 end
