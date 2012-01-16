@@ -6,10 +6,10 @@
 %br
 %h2 Nodes:
 
-= render @board.nodes.reverse
+= render @nodes #reverse в контроллере
+
 
 New node:
-
 
 = form_for([@board, @board.nodes.build]) do |f|
   .field
@@ -27,5 +27,7 @@ New node:
     =f.submit 'Save'
 
 =# link_to 'Edit', edit_board_path(@board)
+
+= will_paginate @nodes
 
 = link_to 'Back', boards_path

@@ -15,7 +15,9 @@ class BoardsController < ApplicationController
   def show
     # Пробуем извлекать борду по code
     @board = Board.find_by_code(params[:id])
-
+    # Пагинация, аттеншн - располагание тредов по убыванию даты последнего коммента происходит здесь,
+    # поэтому нефиг пирать реверс в board/show
+    @nodes = @board.nodes.paginate(:page => params[:page], :order => 'last_comment DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @board }

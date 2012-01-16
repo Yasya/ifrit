@@ -4,7 +4,7 @@ class NodesController < ApplicationController
   #
 
   def index  
-    @nodes = Node.all
+    @nodes = Node.paginate(:page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @nodes }
@@ -41,15 +41,17 @@ class NodesController < ApplicationController
   # POST /nodes
   # POST /nodes.json
   def create
-    @board = Board.find_by_code(params[:board_id])
-    @node = @board.nodes.create(params[:node])
-    @node.last_comment = @node.created_at
-    @node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
-    @node.number = @board.post_counter.to_int + 1
-    @node.save
-    @board.post_counter = @node.number
-    @board.save
     respond_to do |format|
+      
+      @board = Board.find_by_code(params[:board_id])
+      @node = @board.nodes.create(params[:node])
+      @node.last_comment = @node.created_at
+      @node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
+      @node.number = @board.post_counter.to_int + 1
+      @node.save
+      @board.post_counter = @node.number
+      @board.save
+      
       if @node.save
         format.html { redirect_to @node, :notice => 'Node was successfully created.' }
         format.json { render :json => @node, :status => :created, :location => @node }
@@ -58,6 +60,7 @@ class NodesController < ApplicationController
         format.json { render :json => @node.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /nodes/1
