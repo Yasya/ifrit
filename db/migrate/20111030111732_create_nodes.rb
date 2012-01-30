@@ -9,6 +9,7 @@ class CreateNodes < ActiveRecord::Migration
       t.references :comment
       t.references :board
       t.datetime :last_comment
+      t.string   :ip
       t.timestamps
     end
     #add_index :node, :number, :unique => true

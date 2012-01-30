@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20120103094950) do
     t.string   "picture"
     t.integer  "number"
     t.string   "formated_date"
+    t.string   "ip"
     t.integer  "node_id"
     t.integer  "board_id"
     t.datetime "created_at"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120103094950) do
     t.integer  "comment_id"
     t.integer  "board_id"
     t.datetime "last_comment"
+    t.string   "ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

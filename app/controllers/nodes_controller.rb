@@ -45,6 +45,7 @@ class NodesController < ApplicationController
       
       @board = Board.find_by_code(params[:board_id])
       @node = @board.nodes.create(params[:node])
+      @node.ip = getIp
       @node.last_comment = @node.created_at
       @node.formated_date = @node.created_at.strftime("%d %b %Y, %H:%M")
       @node.number = @board.post_counter.to_int + 1

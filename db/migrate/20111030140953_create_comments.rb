@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :picture
       t.integer :number
       t.string :formated_date
+      t.string :ip
       t.references :node
       t.references :board
       t.timestamps

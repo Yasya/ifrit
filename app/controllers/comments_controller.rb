@@ -46,6 +46,7 @@ class CommentsController < ApplicationController
    @node = Node.find(params[:node_id])
    @board = @node.board
    @comment = @node.comments.create(params[:comment])
+   @comment.ip = getIp
    @comment.formated_date = @comment.created_at.strftime("%d %b %Y, %H:%M")
    @comment.number = @board.post_counter.to_int + 1
    @comment.save
