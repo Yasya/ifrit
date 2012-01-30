@@ -43,7 +43,7 @@ class NodesController < ApplicationController
   def create
     respond_to do |format|
       
-      @board = Board.find_by_code(params[:board_id])
+      @board = Board.find(params[:board_id])
       @node = @board.nodes.create(params[:node])
       @node.ip = getIp
       @node.last_comment = @node.created_at

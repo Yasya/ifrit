@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     # Пробуем извлекать борду по code
-    @board = Board.find_by_code(params[:id])
+    @board = Board.find(params[:id])
     # Пагинация, аттеншн - располагание тредов по убыванию даты последнего коммента происходит здесь,
     # поэтому нефиг пирать реверс в board/show
     @nodes = @board.nodes.paginate(:page => params[:page], :order => 'last_comment DESC')
@@ -37,7 +37,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1/edit
   def edit
-    @board = Board.find_by_code(params[:id])
+    @board = Board.find(params[:id])
   end
 
   # POST /boards
@@ -59,7 +59,7 @@ class BoardsController < ApplicationController
   # PUT /boards/1
   # PUT /boards/1.json
   def update
-    @board = Board.find_by_code(params[:id])
+    @board = Board.find(params[:id])
 
     respond_to do |format|
       if @board.update_attributes(params[:board])
@@ -75,7 +75,7 @@ class BoardsController < ApplicationController
   # DELETE /boards/1
   # DELETE /boards/1.json
   def destroy
-    @board = Board.find_by_code(params[:id])
+    @board = Board.find(params[:id])
     @board.destroy
 
     respond_to do |format|
