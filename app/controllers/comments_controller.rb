@@ -42,27 +42,34 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-   #@node = Node.find_by_number(params[:node_id], params[:board_id])
    @node = Node.find(params[:node_id])
    @board = @node.board
    @comment = @node.comments.create(params[:comment])
-   @comment.ip = getIp
-   @comment.formated_date = @comment.created_at.strftime("%d %b %Y, %H:%M")
-   @comment.number = @board.post_counter.to_int + 1
-   @comment.save
-   @node.last_comment = @comment.created_at # update last_comment field in nodes table
-   @node.save
-   @board.post_counter = @comment.number
-   @board.save
-   redirect_to node_path(@node) 
-  
-  end
+   respond_to do |format|
 
+    if @comment.save
+      @comment.ip = getIp
+      @comment.formated_date = @comment.created_at.strftime("%d %b %Y, %H:%M")
+      @comment.number = @board.post_counter.to_int + 1
+      @comment.save
+      @node.last_comment = @comment.created_at # update last_comment field in nodes table
+      @node.save
+      @board.post_counter = @comment.number
+      @board.save
+      
+      format.html { redirect_to node_path(@node), :notice => 'Comment was successfully created.' }
+      # May be some problems
+      format.json { render :json => @comment, :status => :created, :location => @comment }
+    else
+      format.html { redirect_to node_path(@node), :notice => 'There was some errors.' }
+      format.json { render :json => @comment.errors, :status => :unprocessable_entity }
+    end
+  end
+end
   # PUT /comments/1
   # PUT /comments/1.json
   def update
-    #@comment = Comment.find_by_number(params[:id], params[:board_id])
-    @comments = Comment.find(params[:id])
+  @comments = Comment.find(params[:id])
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
@@ -79,7 +86,6 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @node = Node.find(params[:node_id])
-    #@node = Node.find_by_number(params[:node_id])
     @comment = @node.comments.find(params[:id])
     @comment.destroy
     redirect_to node_path(@node)
