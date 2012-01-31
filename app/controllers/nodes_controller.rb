@@ -52,7 +52,6 @@ class NodesController < ApplicationController
       @node.save
       @board.post_counter = @node.number
       @board.save
-      
       if @node.save
         format.html { redirect_to @node, :notice => 'Node was successfully created.' }
         format.json { render :json => @node, :status => :created, :location => @node }
@@ -61,7 +60,6 @@ class NodesController < ApplicationController
         format.json { render :json => @node.errors, :status => :unprocessable_entity }
       end
     end
-
   end
 
   # PUT /nodes/1

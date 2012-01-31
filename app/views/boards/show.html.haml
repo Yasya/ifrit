@@ -1,5 +1,7 @@
 %p#notice= notice
 
+
+
 %h2
   %center= @board.name
   %center= @board.post_counter
@@ -22,7 +24,6 @@ New node:
     = f.label :picture
     = f.file_field :picture
     = f.hidden_field :picture_cache
-  .field
   .actions
     =f.submit 'Save'
 
