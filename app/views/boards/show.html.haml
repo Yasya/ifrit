@@ -10,24 +10,9 @@
 
 = render @nodes #reverse в контроллере
 
-
 New node:
 
-= form_for([@board, @board.nodes.build]) do |f| 
-  .field
-    = f.label :head
-    = f.text_field :head
-  .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :picture
-    = f.file_field :picture
-    = f.hidden_field :picture_cache
-  .actions
-    =f.submit 'Save'
-
-=# link_to 'Edit', edit_board_path(@board)
+= render 'form'
 
 = will_paginate @nodes
 
