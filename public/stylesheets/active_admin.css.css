@@ -53,7 +53,7 @@ Backtrace:
 /usr/lib/ruby/gems/1.8/gems/warden-1.1.0/lib/warden/manager.rb:34:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.3.6/lib/rack/etag.rb:23:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.3.6/lib/rack/conditionalget.rb:35:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.3.6/lib/rack/conditionalget.rb:25:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.1/lib/action_dispatch/middleware/head.rb:14:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.1.1/lib/action_dispatch/middleware/flash.rb:243:in `call'
