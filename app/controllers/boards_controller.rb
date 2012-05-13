@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
+  #
+  layout 'boards'
   def index
     @boards = Board.all
 

@@ -2,6 +2,8 @@ class NodesController < ApplicationController
   # GET /nodes
   # GET /nodes.json
   #
+  
+  layout 'nodes'
 
   def index  
     @nodes = Node.paginate(:page => params[:page])

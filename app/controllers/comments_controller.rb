@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
+  
+  layout 'comments'
+
   def index
     @comments = Comment.all
 
