@@ -6,17 +6,16 @@ Syntax error: File to import not found or unreadable: variables.
                 /home/wizard/ruby_pro/ifrit/app/assets/stylesheets
                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/blueprint/stylesheets
                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets
-        on line 1 of /home/wizard/ruby_pro/ifrit/app/assets/stylesheets/boards.css.scss
+        on line 10 of /home/wizard/ruby_pro/ifrit/app/assets/stylesheets/application.css.scss
 
-1: @import "variables";
-2: 
-3: h1{
-4:   margin: $margin;
-5: }
-6: 
+5:  *= require_self
+6:  *= require_tree . 
+7: */
+8: 
+9: @import "variables"
 
 Backtrace:
-/home/wizard/ruby_pro/ifrit/app/assets/stylesheets/boards.css.scss:1
+/home/wizard/ruby_pro/ifrit/app/assets/stylesheets/application.css.scss:10
 /usr/lib/ruby/gems/1.8/gems/sass-3.1.12/lib/sass/../sass/tree/import_node.rb:64:in `import'
 /usr/lib/ruby/gems/1.8/gems/sass-3.1.12/lib/sass/../sass/tree/import_node.rb:25:in `imported_file'
 /usr/lib/ruby/gems/1.8/gems/sass-3.1.12/lib/sass/../sass/tree/visitors/perform.rb:149:in `visit_import'
@@ -103,4 +102,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: variables.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/wizard/ruby_pro/ifrit/public/stylesheets/sass\A                 /home/wizard/ruby_pro/ifrit/app/assets/stylesheets\A                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/blueprint/stylesheets\A                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets\A         on line 1 of /home/wizard/ruby_pro/ifrit/app/assets/stylesheets/boards.css.scss\A \A 1: @import \"variables\";\A 2: \A 3: h1{\A 4:   margin: $margin;\A 5: }\A 6: "; }
+  content: "Syntax error: File to import not found or unreadable: variables.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/wizard/ruby_pro/ifrit/public/stylesheets/sass\A                 /home/wizard/ruby_pro/ifrit/app/assets/stylesheets\A                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/blueprint/stylesheets\A                 /usr/lib/ruby/gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets\A         on line 10 of /home/wizard/ruby_pro/ifrit/app/assets/stylesheets/application.css.scss\A \A 5:  *= require_self\A 6:  *= require_tree . \A 7: */\A 8: \A 9: @import \"variables\""; }
